@@ -1,6 +1,6 @@
 import math
 import os
-#from gpe import GPEPython
+import GPEPython
 
 
 class GPE(GPEPython):
