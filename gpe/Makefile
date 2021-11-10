@@ -13,7 +13,7 @@ DEBUG =
 PROFILER =
 
 ## Disable to run on single core ##
-OPENMP = 	-fopenmp
+#OPENMP = 	-fopenmp
 
 ## Enable C++0x features ##
 CPP0X=--std=c++0x
