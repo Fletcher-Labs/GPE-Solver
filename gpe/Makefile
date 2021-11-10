@@ -1,8 +1,6 @@
-## Python 2 or Python 3 ##
-PY_HEADER = "/usr/include/python3.4m"
+## Python 3 ##
+PY_HEADER = "/usr/include/python3.7"
 PY_BOOST = boost_python3
-# PY_HEADER = "/usr/include/python2.7"
-# PY_BOOST = boost_python
 
 ## Enable debug macro ##
 # DEBUG = -DDEBUG_GPE
