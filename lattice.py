@@ -4,7 +4,7 @@ from gpe import LatticeGPE
 sim = LatticeGPE("Lattice",2,0,80)
 
 # Grid parameters
-sim.setGridSize(32)
+sim.setGridSize(64)
 
 # Contact interaction
 # Only the product (atomNumber - 1) * scatteringLength is important
