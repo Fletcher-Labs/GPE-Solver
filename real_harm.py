@@ -21,7 +21,7 @@ sim.set("evolutionDipolar", True)
 sim.initialize()
 
 # Imaginary time evolution
-sim.ite(steps=5000, monitorSteps=1000, plotSteps=1000)
+#sim.ite(steps=5000, monitorSteps=1000, plotSteps=1000)
 
 # Real time evolution
 sim.rte(steps=5000, monitorSteps=500, plotSteps=500)
