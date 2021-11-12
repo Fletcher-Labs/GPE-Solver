@@ -42,6 +42,8 @@ class GPE(GPEPython):
         self.setBool("evolutionContact",         True)
         self.setBool("evolutionDipolar",         True)
         self.setBool("evolutionThreeBodyLosses", False)
+        
+        #Three-body losses accounted for, just need to add trap rotation and LHY terms
 
     def __del__(self):
         """Close all data files"""
