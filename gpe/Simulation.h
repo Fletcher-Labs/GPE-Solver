@@ -6,6 +6,7 @@
 #include "PotentialLattice.h"
 #include "PotentialHarmonic.h"
 #include "PotentialDipolar.h"
+// Add LHY stuff
 
 class Simulation {
  public:
@@ -42,11 +43,12 @@ class Simulation {
     double energyPotential() const;
     double energyContact() const;
     double energyDipolar();  // cannot be declared as const because of Fourier transform
+    // Add LHY stuff
 
     double energyTotal() {
         // This function is normally not used (by the python interface) so
         // we don't have to care about optimizing it (store energies..)
-        return energyContact() + energyPotential() + energyKinetic() + energyDipolar();
+        return energyContact() + energyPotential() + energyKinetic() + energyDipolar();// Add LHY stuff
     }
 
     void writeDensity(const string filename) const;
@@ -79,6 +81,7 @@ class Simulation {
     PotentialKinetic * _potentialKinetic;
     Array * _potentialExternal;
     PotentialDipolar * _potentialDipolar;
+    // Add LHY stuff?
 };
 
 #endif /* SIMULATION_H_ */
