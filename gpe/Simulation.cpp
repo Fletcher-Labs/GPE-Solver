@@ -86,6 +86,7 @@ void Simulation::evolution(int steps) {
     bool evolutionDipolar = _sp.getBool("evolutionDipolar");
     bool evolutionThreeBodyLosses = _sp.getBool("evolutionThreeBodyLosses");
     bool evolutionModulation = (_sp.getString("externalPotential") == "modulatedHarmonic");
+    // Incorporate LHY term similar to 3body loss term. No additional potential, just a switch to toggle.
 
     double contactInteractionFactor = 0;
     if (evolutionContact) {
