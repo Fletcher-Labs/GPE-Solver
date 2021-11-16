@@ -32,6 +32,8 @@ void Simulation::initialize(bool deleteWavefunction) {
         delete _potentialDipolar;
         _potentialDipolar = 0;
     }
+    
+    // Add LHY stuff
 
     if (deleteWavefunction) {
         // Initialize wavefunction
