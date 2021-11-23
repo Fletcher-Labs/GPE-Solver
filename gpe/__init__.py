@@ -42,8 +42,9 @@ class GPE(GPEPython):
         self.setBool("evolutionContact",         True)
         self.setBool("evolutionDipolar",         True)
         self.setBool("evolutionThreeBodyLosses", False)
+        self.setBool("evolutionLHY",             False)
         
-        #Three-body losses accounted for, just need to add trap rotation(?) and LHY terms
+        #just need to add trap rotation(?)
 
     def __del__(self):
         """Close all data files"""
@@ -152,18 +153,20 @@ class GPE(GPEPython):
         Epot = self.energyPotential()
         Econ = self.energyContact()
         Edip = self.energyDipolar()
+        ELHY = self.energyLHY()
 
-        return Ekin + Epot + Econ + Edip
+        return Ekin + Epot + Econ + Edip + energyLHY
 
     def energyInt(self):
-        """returns the contact + dipolar interaction energy"""
+        """returns the contact + dipolar interaction energy + LHY correction"""
         Econ = self.energyContact()
         Edip = self.energyDipolar()
+        ELHY = self.energyLHY()
 
-        return abs(Econ) + abs(Edip)
+        return abs(Econ) + abs(Edip) + abs(ELHY)
 
     def virial(self):
-        """returns viral"""
+        """returns viral without LHY"""
         Ekin = self.energyKinetic()
         Epot = self.energyPotential()
         Econ = self.energyContact()
@@ -176,10 +179,11 @@ class GPE(GPEPython):
         Epot = self.energyPotential()
         Econ = self.energyContact()
         Edip = self.energyDipolar()
-        Etot = Ekin + Epot + Econ + Edip
+        ELHY = self.energyLHY()
+        Etot = Ekin + Epot + Econ + Edip + ELHY
         Vir = 2 * (Ekin - Epot) + 3 * (Econ + Edip)
 
-        energies = [Etot, Ekin, Epot, Econ, Edip, Vir]
+        energies = [Etot, Ekin, Epot, Econ, Edip, ELHY, Vir]
 
         string = "{totalSteps:08}\t".format(totalSteps=self.totalSteps)
         string = string + "\t".join([format(E, " 10.9f") for E in energies]) + "\n"
