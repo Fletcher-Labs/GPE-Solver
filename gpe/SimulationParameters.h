@@ -106,6 +106,11 @@ class SimulationParameters {
         // factor = g * (N - 1) = 4 pi a * (N - 1)
         return 4 * M_PI * getDouble("scatteringLength") * (getDouble("atomNumber") - 1);
     }
+ 
+    double getLHYPreFactor() const {
+        //??
+        return 1
+    }
 
     double getDipolarInteractionFactor() const {
         // factor = g_dd * (N - 1) = 4 pi a_dd * (N - 1)
