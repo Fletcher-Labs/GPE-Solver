@@ -33,7 +33,6 @@ void Simulation::initialize(bool deleteWavefunction) {
         _potentialDipolar = 0;
     }
     
-    // Add LHY stuff
 
     if (deleteWavefunction) {
         // Initialize wavefunction
@@ -86,11 +85,16 @@ void Simulation::evolution(int steps) {
     bool evolutionDipolar = _sp.getBool("evolutionDipolar");
     bool evolutionThreeBodyLosses = _sp.getBool("evolutionThreeBodyLosses");
     bool evolutionModulation = (_sp.getString("externalPotential") == "modulatedHarmonic");
-    // Incorporate LHY term similar to 3body loss term. No additional potential, just a switch to toggle.
+    bool evolutionLHY = _sp.getBool("evolutionLHY"); // Incorporate LHY term similar to 3body loss term. No additional potential, just a switch to toggle.
 
     double contactInteractionFactor = 0;
     if (evolutionContact) {
         contactInteractionFactor = _sp.getContactInteractionFactor();
+    }
+    
+    double LHYPreFactor = 0;
+    if (evolutionLHY) {
+        LHYPreFactor = _sp.getLHYPreFactor();
     }
 
     complex_t threeBodyLossesFactor;
@@ -130,13 +134,18 @@ void Simulation::evolution(int steps) {
     for (int step = 0; step < steps; step++) {
         t = step * dt;
 
-        if (evolutionContact || evolutionDipolar || evolutionThreeBodyLosses) {
+        if (evolutionContact || evolutionDipolar || evolutionThreeBodyLosses || evolutionLHY) {
             _wavefunction->abs2Copy(*_density);
         }
 
         if (evolutionContact) {
             // Evolution via contact interaction
             _wavefunction->evolution(*_density, contactInteractionFactor * evolutionCoefficient);
+        }
+        
+        if (evolutionLHY) {
+            // Evolution with LHY correction
+            _wavefunction->evolution(*_density, LHYPreFactor * evolutionCoefficient)
         }
 
         if (evolutionDipolar) {
@@ -210,6 +219,11 @@ double Simulation::energyContact() const {
     // factor 1/2 is due to the additional 1/2 in the energy functional:
     // E_contact = g/2 * (N-1) * integral |Psi|^4
     return 0.5 * _sp.getContactInteractionFactor() * _wavefunction->integral(*_density);
+}
+
+double Simulation::energyLHY() const {
+    // E_LHY = ??
+    return 1
 }
 
 double Simulation::energyDipolar() {
