@@ -85,7 +85,7 @@ void Simulation::evolution(int steps) {
     bool evolutionDipolar = _sp.getBool("evolutionDipolar");
     bool evolutionThreeBodyLosses = _sp.getBool("evolutionThreeBodyLosses");
     bool evolutionModulation = (_sp.getString("externalPotential") == "modulatedHarmonic");
-    bool evolutionLHY = _sp.getBool("evolutionLHY"); // Incorporate LHY term similar to 3body loss term. No additional potential, just a switch to toggle.
+    bool evolutionLHY = _sp.getBool("evolutionLHY"); 
 
     double contactInteractionFactor = 0;
     if (evolutionContact) {
@@ -144,7 +144,7 @@ void Simulation::evolution(int steps) {
         }
         
         if (evolutionLHY) {
-            // Evolution with LHY correction
+            // Evolution with LHY correction, do we need to make this density^3/2 as in 3body below??
             _wavefunction->evolution(*_density, LHYPreFactor * evolutionCoefficient)
         }
 
@@ -222,8 +222,11 @@ double Simulation::energyContact() const {
 }
 
 double Simulation::energyLHY() const {
-    // E_LHY = ??
-    return 1
+    if (!_sp.getBool("evolutionLHY"))
+        return 0;
+
+    // E_LHY = 128 / 15 * sqrt(a^3 / pi) * |Psi| * E_contact
+    return 128 / 15 * sqrt( _sp.getContactInteractionFactor()^3 / M_PI) *  _wavefunction->integral(*_density) * energyContact();
 }
 
 double Simulation::energyDipolar() {
