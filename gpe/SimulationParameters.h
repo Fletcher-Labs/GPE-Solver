@@ -108,8 +108,10 @@ class SimulationParameters {
     }
  
     double getLHYPreFactor() const {
-        //??
-        return 1
+        // factor = 32 * g * sqrt(a^3) / 3 / sqrt(pi) * (1 + 3/2 * edd^2) * sqrt((N - 1)^3)
+        bracketprefac = 32 / 3 * sqrt(getDouble("scatteringLength")^3 / M_PI * (getDouble("atomNumber") - 1)); 
+        bracketterm = 1 + (3 / 2) * (getDouble("dipolarLength") / getDouble("scatteringLength"))^2;
+     return getContactInteractionFactor() * bracketprefac * bracketterm;
     }
 
     double getDipolarInteractionFactor() const {
