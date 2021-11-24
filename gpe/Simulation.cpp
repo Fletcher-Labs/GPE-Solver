@@ -146,10 +146,10 @@ void Simulation::evolution(int steps) {
         if (evolutionLHY) {
             // Evolution with LHY correction
             if (evolutionLHY) {
-                _wavefunction->abs2Copy(*_density);  // re-create the density
+                _wavefunction->abs2Copy(*_density);  // re-create the density?
             }
-            _density->pow(abs2(),0.75);
-            _wavefunction->evolution(*_density, LHYPreFactor * evolutionCoefficient);
+            _density->abs2(); //?
+            _wavefunction->evolution(pow(*_density,0.75), LHYPreFactor * evolutionCoefficient); //?
         }
 
         if (evolutionDipolar) {
