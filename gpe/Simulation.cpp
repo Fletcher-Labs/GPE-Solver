@@ -145,7 +145,7 @@ void Simulation::evolution(int steps) {
         
         if (evolutionLHY) {
             // Evolution with LHY correction, do we need to make this density^3/2 as in 3body below??
-            _wavefunction->evolution(*_density, LHYPreFactor * evolutionCoefficient)
+            _wavefunction->evolution(*_density, LHYPreFactor * evolutionCoefficient);
         }
 
         if (evolutionDipolar) {
