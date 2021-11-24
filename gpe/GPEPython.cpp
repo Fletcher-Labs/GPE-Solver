@@ -73,6 +73,10 @@ class GPEPython {
     double energyDipolar() {
         return _simulation->energyDipolar();
     }
+ 
+    double energyLHY() {
+        return _simulation->energyLHY();
+    }
 
     void write(string filename) {
         _simulation->writeDensity(filename);
