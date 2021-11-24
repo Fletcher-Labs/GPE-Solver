@@ -42,7 +42,7 @@ class GPE(GPEPython):
         self.setBool("evolutionContact",         True)
         self.setBool("evolutionDipolar",         True)
         self.setBool("evolutionThreeBodyLosses", False)
-        self.setBool("evolutionLHY",             False)
+        self.setBool("evolutionLHY",             True)
         
         #just need to add trap rotation(?)
 
@@ -155,7 +155,7 @@ class GPE(GPEPython):
         Edip = self.energyDipolar()
         ELHY = self.energyLHY()
 
-        return Ekin + Epot + Econ + Edip + energyLHY
+        return Ekin + Epot + Econ + Edip + ELHY
 
     def energyInt(self):
         """returns the contact + dipolar interaction energy + LHY correction"""
