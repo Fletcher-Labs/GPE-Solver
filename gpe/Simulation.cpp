@@ -226,7 +226,7 @@ double Simulation::energyLHY() const {
         return 0;
 
     // E_LHY = 128 / 15 * sqrt(a^3 / pi) * |Psi| * E_contact
-    return 128 / 15 * sqrt( _sp.getContactInteractionFactor()^3 / M_PI) *  _wavefunction->integral(*_density) * energyContact();
+    return 128 / 15 * sqrt(pow( _sp.getContactInteractionFactor(),3) / M_PI) *  _wavefunction->integral(*_density) * energyContact();
 }
 
 double Simulation::energyDipolar() {
