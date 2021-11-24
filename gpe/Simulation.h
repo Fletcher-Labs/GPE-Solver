@@ -80,7 +80,6 @@ class Simulation {
     PotentialKinetic * _potentialKinetic;
     Array * _potentialExternal;
     PotentialDipolar * _potentialDipolar;
-    // Add LHY stuff?
 };
 
 #endif /* SIMULATION_H_ */
