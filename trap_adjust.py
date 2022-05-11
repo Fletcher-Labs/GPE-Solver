@@ -4,15 +4,15 @@ from gpe import HarmonicTrapGPE
 sim = HarmonicTrapGPE("Real", 190.0, 15.0, 191.0)
 
 # Grid parameters
-sim.setGridSize(64)
+sim.setGridSize(128)
 
 # Contact interaction
 # Only the product (atomNumber - 1) * scatteringLength is important
 sim.set("atomNumber", 2)
-sim.set("scatteringLength", 1.2)
+sim.set("scatteringLength", 12)
 
 # Dipolar interaction (switched on)
-sim.set("dipolarLength", 1.0)
+sim.set("dipolarLength", 10)
 sim.set("evolutionDipolar", True)
 
 # Number of threads. Equals number of cores if not set
@@ -21,14 +21,14 @@ sim.set("evolutionDipolar", True)
 sim.initialize()
 
 # Imaginary time evolution
-sim.ite(steps=2000, monitorSteps=500, plotSteps=500)
+sim.ite(steps=5000, monitorSteps=1000, plotSteps=1000)
 
 # Real time evolution
-sim.rte(steps=4000, monitorSteps=500, plotSteps=500)
+sim.rte(steps=10000, monitorSteps=1000, plotSteps=1000)
 
 # adjust trap/quench
 sim.set("omegaY",20.0)
-sim.set("scatteringLength", 0.8)
+sim.set("scatteringLength", 8.0)
 
 #resume evolution
-sim.rte(steps=4000, monitorSteps=500, plotSteps=500)
+sim.rte(steps=10000, monitorSteps=1000, plotSteps=1000)
