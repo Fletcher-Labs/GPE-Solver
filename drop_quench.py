@@ -1,7 +1,7 @@
 from gpe import HarmonicTrapGPE
 
 # Load GPE
-sim = HarmonicTrapGPE("Real", 75, 200, 75)
+sim = HarmonicTrapGPE("Real", 200, 200, 75)
 
 # Grid parameters
 sim.setGridSize(64)
