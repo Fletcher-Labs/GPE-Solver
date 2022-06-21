@@ -42,4 +42,4 @@ sim.set("scatteringLength", 7.0)
 #sim.rte(steps=100, monitorSteps=100, plotSteps=100)
 
 #resume evolution to see droplet formation
-sim.rte(steps=5000, monitorSteps=1000, plotSteps=1000)
+sim.rte(steps=15000, monitorSteps=1000, plotSteps=1000)
