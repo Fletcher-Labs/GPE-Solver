@@ -41,5 +41,10 @@ sim.set("scatteringLength", 7.0)
 #sim.ite(steps=50, monitorSteps=50, plotSteps=50)
 #sim.rte(steps=100, monitorSteps=100, plotSteps=100)
 
-#resume evolution to see droplet formation
-sim.rte(steps=15000, monitorSteps=1000, plotSteps=1000)
+# resume evolution to see droplet formation
+sim.rte(steps=12700, monitorSteps=1000, plotSteps=1000)
+
+# imaginary time evolution to find droplet ground state
+sim.ite(steps=3000, monitorSteps=500, plotSteps=500)
+
+
