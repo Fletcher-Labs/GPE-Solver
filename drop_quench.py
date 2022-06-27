@@ -1,7 +1,7 @@
 from gpe import HarmonicTrapGPE
 
 # Load GPE
-sim = HarmonicTrapGPE("Real", 280, 280, 850)
+sim = HarmonicTrapGPE("Real", 0.33, 0.33, 1.0)
 
 # Grid parameters
 sim.setGridSize(64)
@@ -9,10 +9,10 @@ sim.setGridSize(64)
 # Contact interaction
 # Only the product (atomNumber - 1) * scatteringLength is important
 sim.set("atomNumber", 15000)
-sim.set("scatteringLength", 110.0)
+sim.set("scatteringLength", 0.009)
 
 # Dipolar interaction (switched on)
-sim.set("dipolarLength", 132.0)
+sim.set("dipolarLength", 0.01)
 sim.set("evolutionDipolar", True)
 
 # Number of threads. Equals number of cores if not set
