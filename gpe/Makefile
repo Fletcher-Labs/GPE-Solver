@@ -1,5 +1,5 @@
 ## Python 3 ##
-PY_HEADER = "/usr/include/python3.7"
+PY_HEADER = "/usr/include/python3.8"
 PY_BOOST = boost_python3
 
 ## Enable debug macro ##
