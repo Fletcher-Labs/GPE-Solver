@@ -1,6 +1,6 @@
 ## Python 3 ##
 PY_HEADER = "/usr/include/python3.8"
-PY_BOOST = boost_python3
+PY_BOOST = boost_python38
 
 ## Enable debug macro ##
 # DEBUG = -DDEBUG_GPE
