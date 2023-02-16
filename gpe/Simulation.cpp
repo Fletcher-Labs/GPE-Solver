@@ -224,8 +224,8 @@ double Simulation::energyLHY() const {
     if (!_sp.getBool("evolutionLHY"))
         return 0;
 
-    // E_LHY = 128 / 15 * sqrt(a^3 / pi) * (1 + (3 * add) / (2 * a)) * |Psi| * E_contact ADD THE add PART INTO THE CODE!!
-    return 128 / 15 * sqrt(pow( _sp.getContactInteractionFactor(),3) / M_PI) *  _wavefunction->integral(*_density) * energyContact();
+    // E_LHY = 128 / 15 * sqrt(a^3 / pi) * (1 + (3 * add) / (2 * a)) * |Psi| * E_contact JUST ADDED THE (1+3ADD/2A) PART
+    return 128 / 15 * sqrt(pow( _sp.getContactInteractionFactor(),3) / M_PI) * (1 + (3 * _sp.getDipolarInteractionFactor())/(2 * _sp.getContactInteractionFactor())) *  _wavefunction->integral(*_density) * energyContact();
 }
 
 double Simulation::energyDipolar() {
