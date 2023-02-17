@@ -8,7 +8,7 @@ sim.setGridSize(64)
 
 # Contact interaction
 # Only the product (atomNumber - 1) * scatteringLength is important
-sim.set("atomNumber", 50000)
+sim.set("atomNumber", 40000)
 sim.set("scatteringLength", 0.009)
 
 # Dipolar interaction (switched on)
