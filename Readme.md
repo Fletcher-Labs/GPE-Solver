@@ -1,6 +1,6 @@
-# Dipolar Gross-Pitaevskii Solver
+# Extended Dipolar Gross-Pitaevskii Solver
 
-`gpepython` is a [split-step](http://en.wikipedia.org/wiki/Split-step_method) solver for the (dipolar) [Gross-Pitaevskii equation](http://en.wikipedia.org/wiki/Gross%E2%80%93Pitaevskii_equation). The main part
+`gpepython` is a [split-step](http://en.wikipedia.org/wiki/Split-step_method) solver for the (extended dipolar) [Gross-Pitaevskii equation](http://en.wikipedia.org/wiki/Gross%E2%80%93Pitaevskii_equation). The main part
 of the code is written in C++ and parallelized using [OpenMP](http://en.wikipedia.org/wiki/OpenMP). The simulations can be controlled
 through a Python interface.
 
